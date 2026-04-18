@@ -314,6 +314,116 @@ const illustrations: Record<string, (s: number) => ReactElement> = {
       </svg>
     )
   },
+  'Heat-Strengthened': (s) => {
+    const id = uid('hs', 'grad')
+    return (
+      <svg width={s} height={s} viewBox="0 0 100 100" fill="none">
+        <defs>
+          <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#CFFAFE" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#BEF0F5" stopOpacity="0.5" />
+          </linearGradient>
+        </defs>
+        <rect x="20" y="16" width="60" height="68" rx="4" fill={`url(#${id})`} stroke="#0E7490" strokeWidth="1.5" />
+        <g opacity="0.25" stroke="#F59E0B" strokeWidth="0.5" fill="none">
+          <path d="M30 32 L50 48 M60 25 L45 42 M70 55 L55 70 M28 62 L42 75" />
+        </g>
+        <path d="M26 22 L34 22 L26 34 Z" fill="#FFFFFF" opacity="0.7" />
+        <text x="75" y="24" fontSize="6" fill="#F59E0B" fontWeight="700" opacity="0.8">HS</text>
+      </svg>
+    )
+  },
+  Wired: (s) => (
+    <svg width={s} height={s} viewBox="0 0 100 100" fill="none">
+      <defs>
+        <linearGradient id="wired-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#CFFAFE" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="#BEF0F5" stopOpacity="0.6" />
+        </linearGradient>
+        <pattern id="wire-mesh" width="10" height="10" patternUnits="userSpaceOnUse">
+          <path d="M0 0 L10 10 M10 0 L0 10" stroke="#6B7280" strokeWidth="0.8" opacity="0.7" />
+        </pattern>
+      </defs>
+      <rect x="20" y="16" width="60" height="68" rx="4" fill="url(#wired-grad)" stroke="#0E7490" strokeWidth="1.5" />
+      <rect x="20" y="16" width="60" height="68" rx="4" fill="url(#wire-mesh)" />
+      <path d="M26 22 L32 22 L26 32 Z" fill="#FFFFFF" opacity="0.6" />
+    </svg>
+  ),
+  'Fire-Rated': (s) => (
+    <svg width={s} height={s} viewBox="0 0 100 100" fill="none">
+      <defs>
+        <linearGradient id="fire-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#FEE2E2" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#FECACA" stopOpacity="0.5" />
+        </linearGradient>
+      </defs>
+      <rect x="20" y="16" width="60" height="68" rx="4" fill="url(#fire-grad)" stroke="#DC2626" strokeWidth="1.5" />
+      <g stroke="#DC2626" fill="#FECACA" opacity="0.75">
+        <path d="M50 30 Q55 38 50 46 Q45 38 50 30 Z" strokeWidth="0.8" />
+        <path d="M50 40 Q58 52 50 64 Q42 52 50 40 Z" strokeWidth="0.8" />
+      </g>
+      <rect x="20" y="16" width="60" height="68" rx="4" fill="none" stroke="#FFFFFF" strokeWidth="0.5" opacity="0.5" />
+      <text x="68" y="80" fontSize="5" fill="#DC2626" fontWeight="700" opacity="0.9">FR</text>
+    </svg>
+  ),
+  Bent: (s) => {
+    const id = uid('bent', 'grad')
+    return (
+      <svg width={s} height={s} viewBox="0 0 100 100" fill="none">
+        <defs>
+          <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#CFFAFE" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#BEF0F5" stopOpacity="0.5" />
+          </linearGradient>
+        </defs>
+        <path d="M 25 20 Q 50 10 75 20 L 75 80 Q 50 90 25 80 Z" fill={`url(#${id})`} stroke="#0E7490" strokeWidth="1.5" />
+        <path d="M 25 20 Q 35 14 45 16 L 40 32 Q 30 28 25 34 Z" fill="#FFFFFF" opacity="0.5" />
+        <path d="M 25 20 Q 35 14 45 16 L 42 22 Q 32 18 25 24 Z" fill="#FFFFFF" opacity="0.8" />
+      </svg>
+    )
+  },
+  Solar: (s) => (
+    <svg width={s} height={s} viewBox="0 0 100 100" fill="none">
+      <defs>
+        <linearGradient id="sol-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#1E3A8A" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#1E40AF" stopOpacity="0.7" />
+        </linearGradient>
+      </defs>
+      <rect x="20" y="16" width="60" height="68" rx="4" fill="url(#sol-grad)" stroke="#1E3A8A" strokeWidth="1.5" />
+      <g stroke="#60A5FA" strokeWidth="0.6" opacity="0.6">
+        <line x1="20" y1="32" x2="80" y2="32" />
+        <line x1="20" y1="50" x2="80" y2="50" />
+        <line x1="20" y1="66" x2="80" y2="66" />
+        <line x1="40" y1="16" x2="40" y2="84" />
+        <line x1="60" y1="16" x2="60" y2="84" />
+      </g>
+      <circle cx="72" cy="26" r="5" fill="#FDE68A" opacity="0.9" />
+      <g stroke="#FDE68A" strokeWidth="0.8" strokeLinecap="round" opacity="0.9">
+        <line x1="72" y1="18" x2="72" y2="21" />
+        <line x1="79" y1="26" x2="82" y2="26" />
+        <line x1="67" y1="21" x2="68" y2="22" />
+      </g>
+      <path d="M22 20 L28 20 L22 28 Z" fill="#FFFFFF" opacity="0.4" />
+    </svg>
+  ),
+  Cladding: (s) => (
+    <svg width={s} height={s} viewBox="0 0 100 100" fill="none">
+      <defs>
+        <linearGradient id="clad-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#94A3B8" />
+          <stop offset="100%" stopColor="#475569" />
+        </linearGradient>
+      </defs>
+      <rect x="20" y="18" width="60" height="64" rx="2" fill="url(#clad-grad)" stroke="#334155" strokeWidth="1" />
+      <g stroke="#1F2937" strokeWidth="0.6" opacity="0.5">
+        <line x1="20" y1="34" x2="80" y2="34" />
+        <line x1="20" y1="50" x2="80" y2="50" />
+        <line x1="20" y1="66" x2="80" y2="66" />
+      </g>
+      <rect x="20" y="18" width="60" height="3" fill="#FFFFFF" opacity="0.3" />
+    </svg>
+  ),
   Hardware: (s) => (
     <svg width={s} height={s} viewBox="0 0 100 100" fill="none">
       <defs>

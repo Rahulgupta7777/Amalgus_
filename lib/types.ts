@@ -22,7 +22,7 @@ export interface GlassProduct {
 export interface AlliedProduct {
   id: number
   name: string
-  category: 'Hardware' | 'Sealant' | 'Frame'
+  category: 'Hardware' | 'Sealant' | 'Frame' | 'Cladding'
   brand: string
   material: string
   finish: string

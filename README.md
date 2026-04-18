@@ -122,11 +122,7 @@ Accessibility caveat: neumorphism has low decorative contrast by definition. All
 
 **Role selector.** Four roles: Homeowner, Architect, Builder, Dealer. Affects sort order on the catalog page and gets passed to the LLM so explanations match the buyer's expertise level. A homeowner doesn't care about EN 14449 — they care that the glass won't cut them if it breaks.
 
-## AI tools used during development
-
-- **Groq (Llama 3.3 70B)** — runtime matching engine
-- **v0.dev** — initial scaffold and component generation
-- **Claude** — architecture planning, system prompt iteration, edge case identification
+# What I built
 
 What I built by hand: product data (researched real suppliers, certifications, pricing), the glass-industry system prompt and scoring rubric, the 4-stage matching pipeline, the regex pre-parser, the estimate calculation logic, the SVG illustrations, and all the edge case handling.
 
