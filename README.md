@@ -13,18 +13,6 @@ Not a generic e-commerce demo. Every product, price, supplier name, and certific
 - Inline SVG illustrations per glass type (no external image dependencies)
 - Deploys to Vercel
 
-## Running locally
-
-```
-git clone <repo>
-cd amalgus
-npm install
-cp .env.local.example .env.local   # add GROQ_API_KEY
-npm run dev
-```
-
-Groq key: https://console.groq.com/keys — free tier is fine for this.
-
 ## Architecture
 
 Four pages, one API route, everything else is client-side.
