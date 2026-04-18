@@ -1,0 +1,172 @@
+{
+  "rates": [
+    {
+      "id": 1,
+      "glassType": "Clear Float 5mm",
+      "thickness": "5mm",
+      "today": 52,
+      "unit": "₹/sqft",
+      "change": 2,
+      "changePercent": 3.9,
+      "weekHistory": [
+        { "date": "2026-04-11", "rate": 48 },
+        { "date": "2026-04-12", "rate": 49 },
+        { "date": "2026-04-13", "rate": 50 },
+        { "date": "2026-04-14", "rate": 50 },
+        { "date": "2026-04-15", "rate": 51 },
+        { "date": "2026-04-16", "rate": 50 },
+        { "date": "2026-04-17", "rate": 52 }
+      ],
+      "min": 45,
+      "max": 60,
+      "supplier": "AIS"
+    },
+    {
+      "id": 3,
+      "glassType": "Toughened 8mm",
+      "thickness": "8mm",
+      "today": 140,
+      "unit": "₹/sqft",
+      "change": -3,
+      "changePercent": -2.1,
+      "weekHistory": [
+        { "date": "2026-04-11", "rate": 145 },
+        { "date": "2026-04-12", "rate": 146 },
+        { "date": "2026-04-13", "rate": 143 },
+        { "date": "2026-04-14", "rate": 142 },
+        { "date": "2026-04-15", "rate": 141 },
+        { "date": "2026-04-16", "rate": 143 },
+        { "date": "2026-04-17", "rate": 140 }
+      ],
+      "min": 120,
+      "max": 160,
+      "supplier": "Sejal Glass"
+    },
+    {
+      "id": 6,
+      "glassType": "Laminated 10mm (5+5 PVB)",
+      "thickness": "10mm",
+      "today": 215,
+      "unit": "₹/sqft",
+      "change": 5,
+      "changePercent": 2.4,
+      "weekHistory": [
+        { "date": "2026-04-11", "rate": 205 },
+        { "date": "2026-04-12", "rate": 206 },
+        { "date": "2026-04-13", "rate": 208 },
+        { "date": "2026-04-14", "rate": 209 },
+        { "date": "2026-04-15", "rate": 210 },
+        { "date": "2026-04-16", "rate": 210 },
+        { "date": "2026-04-17", "rate": 215 }
+      ],
+      "min": 180,
+      "max": 250,
+      "supplier": "Sejal Glass"
+    },
+    {
+      "id": 9,
+      "glassType": "DGU/IGU 6+12+6mm",
+      "thickness": "24mm",
+      "today": 425,
+      "unit": "₹/sqft",
+      "change": 0,
+      "changePercent": 0.0,
+      "weekHistory": [
+        { "date": "2026-04-11", "rate": 420 },
+        { "date": "2026-04-12", "rate": 420 },
+        { "date": "2026-04-13", "rate": 422 },
+        { "date": "2026-04-14", "rate": 423 },
+        { "date": "2026-04-15", "rate": 425 },
+        { "date": "2026-04-16", "rate": 425 },
+        { "date": "2026-04-17", "rate": 425 }
+      ],
+      "min": 350,
+      "max": 500,
+      "supplier": "Saint-Gobain"
+    },
+    {
+      "id": 10,
+      "glassType": "Frosted 6mm",
+      "thickness": "6mm",
+      "today": 98,
+      "unit": "₹/sqft",
+      "change": 2,
+      "changePercent": 2.1,
+      "weekHistory": [
+        { "date": "2026-04-11", "rate": 92 },
+        { "date": "2026-04-12", "rate": 93 },
+        { "date": "2026-04-13", "rate": 94 },
+        { "date": "2026-04-14", "rate": 95 },
+        { "date": "2026-04-15", "rate": 96 },
+        { "date": "2026-04-16", "rate": 97 },
+        { "date": "2026-04-17", "rate": 98 }
+      ],
+      "min": 85,
+      "max": 110,
+      "supplier": "AIS"
+    },
+    {
+      "id": 11,
+      "glassType": "Reflective 6mm",
+      "thickness": "6mm",
+      "today": 125,
+      "unit": "₹/sqft",
+      "change": 1,
+      "changePercent": 0.8,
+      "weekHistory": [
+        { "date": "2026-04-11", "rate": 118 },
+        { "date": "2026-04-12", "rate": 119 },
+        { "date": "2026-04-13", "rate": 120 },
+        { "date": "2026-04-14", "rate": 122 },
+        { "date": "2026-04-15", "rate": 123 },
+        { "date": "2026-04-16", "rate": 124 },
+        { "date": "2026-04-17", "rate": 125 }
+      ],
+      "min": 100,
+      "max": 140,
+      "supplier": "Saint-Gobain"
+    },
+    {
+      "id": 12,
+      "glassType": "Low-E 6mm",
+      "thickness": "6mm",
+      "today": 265,
+      "unit": "₹/sqft",
+      "change": -2,
+      "changePercent": -0.7,
+      "weekHistory": [
+        { "date": "2026-04-11", "rate": 272 },
+        { "date": "2026-04-12", "rate": 270 },
+        { "date": "2026-04-13", "rate": 268 },
+        { "date": "2026-04-14", "rate": 267 },
+        { "date": "2026-04-15", "rate": 266 },
+        { "date": "2026-04-16", "rate": 265 },
+        { "date": "2026-04-17", "rate": 265 }
+      ],
+      "min": 200,
+      "max": 300,
+      "supplier": "Sejal Glass"
+    },
+    {
+      "id": 14,
+      "glassType": "Acoustic Laminated 12mm",
+      "thickness": "12mm",
+      "today": 305,
+      "unit": "₹/sqft",
+      "change": 3,
+      "changePercent": 1.0,
+      "weekHistory": [
+        { "date": "2026-04-11", "rate": 298 },
+        { "date": "2026-04-12", "rate": 300 },
+        { "date": "2026-04-13", "rate": 301 },
+        { "date": "2026-04-14", "rate": 302 },
+        { "date": "2026-04-15", "rate": 303 },
+        { "date": "2026-04-16", "rate": 304 },
+        { "date": "2026-04-17", "rate": 305 }
+      ],
+      "min": 250,
+      "max": 350,
+      "supplier": "Saint-Gobain"
+    }
+  ]
+}
