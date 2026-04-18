@@ -71,6 +71,25 @@ export interface EstimateLineItem {
   quantity: number
   unitCost: number
   subtotal: number
+  kind?: 'glass' | 'processing' | 'edge' | 'cutout' | 'allied' | 'service'
+}
+
+export type DeliveryOption = 'Self-Pickup' | 'Local' | 'Inter-City'
+
+export interface EstimateCustomer {
+  name?: string
+  phone?: string
+  pincode?: string
+  siteAddress?: string
+}
+
+export interface EstimateExtras {
+  installation: boolean
+  siteVisit: boolean
+  delivery: DeliveryOption
+  timeline: 'Standard' | 'Express' | 'Flexible'
+  notes: string
+  customer: EstimateCustomer
 }
 
 export interface Estimate {
@@ -81,9 +100,13 @@ export interface Estimate {
   width_mm: number
   height_mm: number
   area_sqft: number
+  area_sqm: number
   baseRate: number
   lineItems: EstimateLineItem[]
   subtotal: number
   gst: number
   total: number
+  extras: EstimateExtras
+  leadTimeDays: number
+  validUntil: string
 }

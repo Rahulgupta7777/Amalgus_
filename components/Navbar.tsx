@@ -7,6 +7,7 @@ import { Menu, Package, Sparkles, Calculator, TrendingUp } from 'lucide-react'
 import { RoleSelector } from './RoleSelector'
 import { MobileNav } from './MobileNav'
 import { Logo } from './Logo'
+import { useEstimateCart } from '@/context/EstimateCartContext'
 
 const navItems = [
   { href: '/', label: 'Products', icon: Package },
@@ -18,6 +19,7 @@ const navItems = [
 export function Navbar() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { totalAlliedCount } = useEstimateCart()
 
   return (
     <>
@@ -61,6 +63,7 @@ export function Navbar() {
               {navItems.map((item) => {
                 const active = pathname === item.href
                 const Icon = item.icon
+                const showBadge = item.href === '/estimate' && totalAlliedCount > 0
                 return (
                   <Link
                     key={item.href}
@@ -77,10 +80,32 @@ export function Navbar() {
                       textDecoration: 'none',
                       boxShadow: active ? 'var(--nm-pressed-sm)' : 'none',
                       transition: 'all 120ms ease-out',
+                      position: 'relative',
                     }}
                   >
                     <Icon size={15} />
                     {item.label}
+                    {showBadge && (
+                      <span
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          minWidth: '18px',
+                          height: '18px',
+                          padding: '0 5px',
+                          borderRadius: '999px',
+                          backgroundColor: 'var(--nm-accent)',
+                          color: '#FFFFFF',
+                          fontSize: '0.65rem',
+                          fontWeight: 700,
+                          fontFamily: 'var(--font-mono)',
+                          marginLeft: '2px',
+                        }}
+                      >
+                        {totalAlliedCount}
+                      </span>
+                    )}
                   </Link>
                 )
               })}

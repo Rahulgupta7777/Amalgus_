@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Outfit, DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { RoleProvider } from '@/context/RoleContext'
+import { EstimateCartProvider } from '@/context/EstimateCartContext'
 import { Navbar } from '@/components/Navbar'
 import { ToastProvider } from '@/components/neumorphic/Toast'
 
@@ -45,8 +46,9 @@ export default function RootLayout({
     >
       <body>
         <RoleProvider>
-          <ToastProvider>
-            <Navbar />
+          <EstimateCartProvider>
+            <ToastProvider>
+              <Navbar />
             <main style={{ minHeight: '100vh' }}>
               <div
                 style={{
@@ -58,7 +60,8 @@ export default function RootLayout({
                 {children}
               </div>
             </main>
-          </ToastProvider>
+            </ToastProvider>
+          </EstimateCartProvider>
         </RoleProvider>
       </body>
     </html>
