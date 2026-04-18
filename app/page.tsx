@@ -1,65 +1,172 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import { useState, useMemo } from 'react'
+import { FilterBar } from '@/components/FilterBar'
+import { ProductGrid } from '@/components/ProductGrid'
+import { EmptyState } from '@/components/EmptyState'
+import { ProductModal } from '@/components/ProductModal'
+import {
+  filterGlassProducts,
+  sortProductsByRole,
+  getGlassProducts,
+  getAlliedProducts,
+  FilterCriteria,
+} from '@/lib/products'
+import { useRole } from '@/context/RoleContext'
+import { Product } from '@/lib/types'
+
+export default function ProductsPage() {
+  const { role } = useRole()
+
+  const [searchText, setSearchText] = useState('')
+  const [glassTypes, setGlassTypes] = useState<string[]>([])
+  const [thickness, setThickness] = useState<number[]>([])
+  const [applications, setApplications] = useState<string[]>([])
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 500])
+  const [modalProduct, setModalProduct] = useState<Product | null>(null)
+
+  const allGlass = useMemo(() => getGlassProducts(), [])
+  const allied = useMemo(() => getAlliedProducts(), [])
+
+  const availableGlassTypes = useMemo(
+    () => Array.from(new Set(allGlass.map((p) => p.glassType))).sort(),
+    [allGlass]
+  )
+  const availableThickness = useMemo(
+    () => Array.from(new Set(allGlass.map((p) => p.thickness))).sort((a, b) => a - b),
+    [allGlass]
+  )
+  const availableApplications = useMemo(() => {
+    const set = new Set<string>()
+    allGlass.forEach((p) => p.application.forEach((a) => set.add(a)))
+    return Array.from(set).sort()
+  }, [allGlass])
+
+  const criteria: FilterCriteria = {
+    searchText,
+    glassTypes,
+    thickness,
+    applications,
+    priceMin: priceRange[0],
+    priceMax: priceRange[1],
+  }
+
+  const filtered = useMemo(() => filterGlassProducts(criteria), [
+    searchText,
+    glassTypes,
+    thickness,
+    applications,
+    priceRange,
+  ])
+  const sorted = useMemo(() => sortProductsByRole(filtered, role), [filtered, role])
+
+  const showingAllied = glassTypes.length === 0 && thickness.length === 0 && applications.length === 0
+  const display: Product[] = showingAllied ? [...sorted, ...allied] : sorted
+
+  const handleReset = () => {
+    setSearchText('')
+    setGlassTypes([])
+    setThickness([])
+    setApplications([])
+    setPriceRange([0, 500])
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+      <section style={{ textAlign: 'center', paddingTop: '20px' }}>
+        <h1
+          style={{
+            fontSize: 'clamp(2rem, 4vw, 3rem)',
+            fontWeight: 700,
+            marginBottom: '10px',
+            letterSpacing: '-0.03em',
+          }}
+        >
+          Discover the perfect glass
+        </h1>
+        <p
+          style={{
+            fontSize: '1.05rem',
+            color: 'var(--nm-text-muted)',
+            maxWidth: '640px',
+            margin: '0 auto 24px',
+          }}
+        >
+          India&apos;s first intelligent glass marketplace — compare types, specs, and prices from
+          verified suppliers.
+        </p>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: '12px',
+            maxWidth: '640px',
+            margin: '0 auto',
+          }}
+        >
+          <StatCard value={`${allGlass.length}+`} label="Glass types" />
+          <StatCard value="4" label="Verified suppliers" />
+          <StatCard value="Daily" label="Market rates" />
+        </div>
+      </section>
+
+      <FilterBar
+        searchText={searchText}
+        onSearchTextChange={setSearchText}
+        selectedGlassTypes={glassTypes}
+        onGlassTypesChange={setGlassTypes}
+        selectedThickness={thickness}
+        onThicknessChange={setThickness}
+        selectedApplications={applications}
+        onApplicationsChange={setApplications}
+        priceRange={priceRange}
+        onPriceRangeChange={setPriceRange}
+        onReset={handleReset}
+        availableGlassTypes={availableGlassTypes}
+        availableThickness={availableThickness}
+        availableApplications={availableApplications}
+        resultCount={sorted.length}
+        totalCount={allGlass.length}
+      />
+
+      {sorted.length > 0 ? (
+        <ProductGrid products={display} onOpenDetails={setModalProduct} />
+      ) : (
+        <EmptyState
+          title="No glass products match"
+          message="Try loosening a filter or clearing your search."
+          actionLabel="Clear filters"
+          onAction={handleReset}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      )}
+
+      <ProductModal product={modalProduct} onClose={() => setModalProduct(null)} />
     </div>
-  );
+  )
+}
+
+function StatCard({ value, label }: { value: string; label: string }) {
+  return (
+    <div
+      style={{
+        backgroundColor: 'var(--nm-bg)',
+        boxShadow: 'var(--nm-raised-sm)',
+        borderRadius: '14px',
+        padding: '16px',
+      }}
+    >
+      <div
+        style={{
+          fontFamily: 'var(--font-outfit), sans-serif',
+          fontSize: '1.2rem',
+          fontWeight: 700,
+          color: 'var(--nm-accent)',
+          marginBottom: '2px',
+        }}
+      >
+        {value}
+      </div>
+      <div style={{ fontSize: '0.78rem', color: 'var(--nm-text-muted)' }}>{label}</div>
+    </div>
+  )
 }
